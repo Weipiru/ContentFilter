@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('#btnAdd').click(function () {
+                let val = $('#ipt').val();
+                let arr = val.split(',');
+                for (let a of arr) {
+                 //   chrome.storage.sync.set({"intercept_keyword": val});
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+<h1>这是配置页</h1>
+<div>
+    <label for="ipt">添加关键字,多个关键词逗号分隔</label>
+    <input id="ipt" type="text" style=" width:150px">
+    <button id="btnAdd">Add</button>
+</div>
+</body>
+</html>
