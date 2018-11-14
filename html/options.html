@@ -7,15 +7,39 @@
     <script type="text/javascript">
 
         $(function () {
-            $('#btnAdd').click(function () {
-                let val = $('#ipt').val();
-                let arr = val.split(',');
-                for (let a of arr) {
-                 //   chrome.storage.sync.set({"intercept_keyword": val});
-                }
+            let windows = chrome.extension.getViews();
+            for (let extensionWindow of windows) {
+                if (extensionWindow.location.pathname === "/_generated_background_page.html") {
+
+                    var page = chrome.extension.getBackgroundPage();
+                    page.sendMsg(keyWords);
+
+                    $('#btnAdd').click(function () {
+                        console.log("加载关键字数量：" + keyWords.length);
+                        //获取关键字列表
+                        let keyWords = chrome.storage.sync.get(['key'], function (data) {
+                            keyWords = data['key'];
+                            console.log("加载关键字数量：" + keyWords.length);
+                        });
+                        let val = $('#ipt').val();
+                        let arr = val.split(',');
+                        for (let a of arr) {
+                            keyWords.push(a);
+                        }
+                });
+            }
+
+
+
+
+//                chrome.storage.sync.set({"key": keyWords}, function () {
+//                    alert('保存成功');
+//                });
             });
         });
-
+        function aa() {
+            alert('')
+        }
     </script>
 </head>
 <body>
@@ -23,7 +47,7 @@
 <div>
     <label for="ipt">添加关键字,多个关键词逗号分隔</label>
     <input id="ipt" type="text" style=" width:150px">
-    <button id="btnAdd">Add</button>
+    <button id="btnAdd" onclick="aa()">Add</button>
 </div>
 </body>
 </html>

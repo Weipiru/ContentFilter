@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "InterceptStation",
+  "name": "ContentFilter",
   "version": "1.0.0",
   "description": "标记或拦截指定关键字",
   "icons": {
@@ -9,8 +9,8 @@
   "background": {
     // 如果指定JS，那么会自动生成一个背景页
     "scripts": [
-//      "js/jquery-3.3.1.js",
-//      "js/background.js"
+      "js/jquery-3.3.1.js",
+      "js/background.js"
     ]
   },
   "browser_action": {
